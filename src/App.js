@@ -5,7 +5,9 @@ import 'semantic-ui-css/semantic.min.css';
 import matt from './assets/images/BlueHead.jpg';
 import './App.css';
 
-import { Menu, Input, Dropdown, Feed, Icon, Comment, Form, Button } from 'semantic-ui-react'
+import QuestionModal from './Modal.js'
+
+import { Menu, Input, Dropdown, Feed, Icon, Comment, Form, Button, Checkbox } from 'semantic-ui-react'
 
 const CommentExampleActions = (
     <Comment.Group threaded className='text container'>
@@ -213,18 +215,58 @@ const FeedExampleBasic = (
       </Feed>
 )
 
+const Thread = (props) => (
+        <Comment>
+            <Comment.Avatar as='a' src={matt} />
+            <Comment.Content>
+                <Comment.Author as='a'>{props.author}</Comment.Author>
+                <Comment.Metadata>
+                    <span>Today at 4:20PM</span>
+                </Comment.Metadata>
+                <Comment.Text>
+                    {props.text}
+                </Comment.Text>
+                <Comment.Actions>
+                    <Comment.Action>Reply</Comment.Action>
+                    <Comment.Action>Upvote</Comment.Action>
+                    <Comment.Action>Downvote</Comment.Action>
+                    <Comment.Action>
+                        <Icon name='expand' />
+                        Full-screen
+                    </Comment.Action>
+
+                </Comment.Actions>
+                <Form reply>
+                    <Form.TextArea />
+                    <Button content='Add Reply' labelPosition='left' icon='edit' primary onClick={this.handleReply}/>
+                </Form>
+            </Comment.Content>
+        </Comment>
+)
 
 class App extends Component {
-    state = {
-        activeItem: 'home',
-        collapsed: true
+    constructor() {
+        super()
+        this.state = {
+            activeItem: 'home',
+            collapsed: true,
+            threads: [{author: "Henry Han", text: "hi there"}]
+        }
+
+        this.handleQuestionSubmit = this.handleQuestionSubmit.bind(this)
     }
+
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
     handleReply = (e, { checked }) => this.setState({ collapsed: checked})
+    handleNewPost = (e, {props}) => this.setState({author: props.author, text: props.text})
+
+    handleQuestionSubmit = (author, text) => {
+        this.setState({threads: [...this.state.threads, {author, text}]})
+    }
 
     render() {
-        const { activeItem, collapse } = this.state
+        const { activeItem, collapsed } = this.state
 
         return (
             <div>
@@ -232,6 +274,8 @@ class App extends Component {
                     <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
                     <Menu.Item name='messages' active={activeItem === 'messages'} onClick={this.handleItemClick} />
                     <Menu.Item name='friends' active={activeItem === 'friends'} onClick={this.handleItemClick} />
+
+                    <QuestionModal handleQuestionSubmit={this.handleQuestionSubmit} />
 
                     <h1 className="title">SwatOverflow</h1>
 
@@ -246,8 +290,66 @@ class App extends Component {
                     </Menu.Menu>
                 </Menu>
 
-                {CommentExampleAction}
-                {anotherComment}
+                {CommentExampleActions}
+                <Comment.Group threaded className='text container'>
+                    {this.state.threads.map((thread) => (
+                        <Thread author={thread.author} text={thread.text} />
+                    ))}
+
+                    <Comment>
+                        <Comment.Avatar as='a' src={matt} />
+                        <Comment.Content>
+                            <Comment.Author as='a'>Luke Tinik</Comment.Author>
+                            <Comment.Metadata>
+                                <span>Today at 4:20PM</span>
+                            </Comment.Metadata>
+                            <Comment.Text>
+                                Anyone have any tricks to calculate cross products quickly?
+                            </Comment.Text>
+                            <Comment.Actions>
+                                <Comment.Action>Reply</Comment.Action>
+                                <Comment.Action>Upvote</Comment.Action>
+                                <Comment.Action>Downvote</Comment.Action>
+                                <Comment.Action>
+                                    <Icon name='expand' />
+                                    Full-screen
+                                </Comment.Action>
+
+                            </Comment.Actions>
+                            <Form reply>
+                                <Form.TextArea />
+                                <Button content='Add Reply' labelPosition='left' icon='edit' primary onClick={this.handleReply}/>
+                            </Form>
+                        </Comment.Content>
+                    </Comment>
+
+                    <Comment collapsed = {collapsed}>
+                        <Comment.Avatar as='a' src={matt} />
+                        <Comment.Content>
+                            <Comment.Author as='a'>Jake Wilder</Comment.Author>
+                            <Comment.Metadata>
+                                <span>Just Now</span>
+                            </Comment.Metadata>
+                            <Comment.Text>
+                                You take the determinant of the vectors!
+                            </Comment.Text>
+                            <Comment.Actions>
+                                <Comment.Action>Reply</Comment.Action>
+                                <Comment.Action>Upvote</Comment.Action>
+                                <Comment.Action>Downvote</Comment.Action>
+                                <Comment.Action>
+                                    <Icon name='expand' />
+                                    Full-screen
+                                </Comment.Action>
+                            </Comment.Actions>
+                            <Form reply>
+                                <Form.TextArea />
+                                <Button content='Add Reply' labelPosition='left' icon='edit' primary />
+                            </Form>
+                        </Comment.Content>
+                    </Comment>
+
+                </Comment.Group>
             </div>
         )
     }
