@@ -1,3 +1,7 @@
+# SwatOverflow
+### Swarthmore Local Hack Day 2017
+Project is still a work in progress :)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
