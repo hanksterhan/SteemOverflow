@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
 
-import matt from './assets/images/BlueHead.jpg';
+import pic from './assets/images/phoenix_logo_2color.gif';
 import './App.css';
 
 import QuestionModal from './Modal.js'
@@ -12,7 +12,7 @@ import { Menu, Input, Dropdown, Feed, Icon, Comment, Form, Button, Checkbox } fr
 const CommentExampleActions = (
     <Comment.Group threaded className='text container'>
         <Comment>
-            <Comment.Avatar as='a' src={matt} />
+            <Comment.Avatar as='a' src={pic} />
             <Comment.Content>
                 <Comment.Author as='a'>Tom Lukic</Comment.Author>
                 <Comment.Metadata>
@@ -25,6 +25,7 @@ const CommentExampleActions = (
                     <Comment.Action>Reply</Comment.Action>
                     <Comment.Action>Upvote</Comment.Action>
                     <Comment.Action>Downvote</Comment.Action>
+                    <Comment.Action>Follow</Comment.Action>
                     <Comment.Action>
                         <Icon name='expand' />
                         Full-screen
@@ -32,8 +33,8 @@ const CommentExampleActions = (
                 </Comment.Actions>
             </Comment.Content>
             <Comment.Group threaded className='text container'>
-                <Comment>
-                    <Comment.Avatar as='a' src={matt} />
+                <Comment className='comment'>
+                    <Comment.Avatar as='a' src={pic} />
                     <Comment.Content>
                         <Comment.Author as='a'>Michael Wertz</Comment.Author>
                         <Comment.Metadata>
@@ -46,6 +47,7 @@ const CommentExampleActions = (
                             <Comment.Action>Reply</Comment.Action>
                             <Comment.Action>Upvote</Comment.Action>
                             <Comment.Action>Downvote</Comment.Action>
+                            <Comment.Action>Follow</Comment.Action>
                             <Comment.Action>
                                 <Icon name='expand' />
                                 Full-screen
@@ -55,8 +57,8 @@ const CommentExampleActions = (
                 </Comment>
             </Comment.Group>
             <Comment.Group threaded className='text container'>
-                <Comment>
-                    <Comment.Avatar as='a' src={matt} />
+                <Comment className='comment'>
+                    <Comment.Avatar as='a' src={pic} />
                     <Comment.Content>
                         <Comment.Author as='a'>Nicole Khorosh</Comment.Author>
                         <Comment.Metadata>
@@ -69,6 +71,7 @@ const CommentExampleActions = (
                             <Comment.Action>Reply</Comment.Action>
                             <Comment.Action>Upvote</Comment.Action>
                             <Comment.Action>Downvote</Comment.Action>
+                            <Comment.Action>Follow</Comment.Action>
                             <Comment.Action>
                                 <Icon name='expand' />
                                 Full-screen
@@ -82,8 +85,8 @@ const CommentExampleActions = (
 )
 const anotherComment = (
     <Comment.Group threaded className='text container'>
-        <Comment>
-            <Comment.Avatar as='a' src={matt} />
+        <Comment className='comment'>
+            <Comment.Avatar as='a' src={pic} />
             <Comment.Content>
                 <Comment.Author as='a'>Luke Tinik</Comment.Author>
                 <Comment.Metadata>
@@ -96,6 +99,7 @@ const anotherComment = (
                     <Comment.Action>Reply</Comment.Action>
                     <Comment.Action>Upvote</Comment.Action>
                     <Comment.Action>Downvote</Comment.Action>
+                    <Comment.Action>Follow</Comment.Action>
                     <Comment.Action>
                         <Icon name='expand' />
                         Full-screen
@@ -111,113 +115,10 @@ const anotherComment = (
     </Comment.Group>
 )
 
-const FeedExampleBasic = (
-      <Feed className='text container'>
-        <Feed.Event>
-          <Feed.Label>
-            <img src={matt} />
-          </Feed.Label>
-          <Feed.Content>
-            <Feed.Summary>
-              <Feed.User>Matt Czernik</Feed.User> added you as a friend
-              <Feed.Date>1 Hour Ago</Feed.Date>
-            </Feed.Summary>
-            <Feed.Meta>
-              <Feed.Like>
-                <Icon name='like' />
-                4 Likes
-              </Feed.Like>
-            </Feed.Meta>
-          </Feed.Content>
-        </Feed.Event>
-
-        <Feed.Event>
-          <Feed.Label>
-            <img src={matt} />
-          </Feed.Label>
-          <Feed.Content>
-            <Feed.Summary>
-              <a>Kastan Day</a> added <a>2 new illustrations</a>
-              <Feed.Date>4 days ago</Feed.Date>
-            </Feed.Summary>
-            <Feed.Extra images>
-              <a><img src='/assets/images/wireframe/image.png' /></a>
-              <a><img src='/assets/images/wireframe/image.png' /></a>
-            </Feed.Extra>
-            <Feed.Meta>
-              <Feed.Like>
-                <Icon name='like' />
-                1 Like
-              </Feed.Like>
-            </Feed.Meta>
-          </Feed.Content>
-        </Feed.Event>
-
-        <Feed.Event>
-            <Feed.Label>
-              <img src={matt} />
-            </Feed.Label>
-          <Feed.Content>
-            <Feed.Summary date='2 Days Ago' user='Nicole Khorosh' content=' add you as a friend' />
-            <Feed.Meta>
-              <Feed.Like>
-                <Icon name='like' />
-                8 Likes
-              </Feed.Like>
-            </Feed.Meta>
-          </Feed.Content>
-        </Feed.Event>
-
-        <Feed.Event>
-            <Feed.Label>
-              <img src={matt} />
-            </Feed.Label>
-          <Feed.Content>
-            <Feed.Summary>
-              <a>Henry Han</a> posted on his page
-              <Feed.Date>3 days ago</Feed.Date>
-            </Feed.Summary>
-            <Feed.Extra text>
-              Ours is a life of constant reruns. We're always circling back to where we'd we started, then starting all
-              over again. Even if we dont run extra laps that day, we surely will come back for more of the same another
-              day soon.
-            </Feed.Extra>
-            <Feed.Meta>
-              <Feed.Like>
-                <Icon name='like' />
-                69 Likes
-              </Feed.Like>
-            </Feed.Meta>
-          </Feed.Content>
-        </Feed.Event>
-
-        <Feed.Event>
-            <Feed.Label>
-              <img src={matt} />
-            </Feed.Label>
-          <Feed.Content>
-            <Feed.Summary>
-              <a>Justen Kitsune</a> added <a>2 new photos</a> of you
-              <Feed.Date>4 days ago</Feed.Date>
-            </Feed.Summary>
-            <Feed.Extra images>
-              <a><img src='/assets/images/wireframe/image.png' /></a>
-              <a><img src='/assets/images/wireframe/image.png' /></a>
-            </Feed.Extra>
-            <Feed.Meta>
-              <Feed.Like>
-                <Icon name='like' />
-                41 Likes
-              </Feed.Like>
-            </Feed.Meta>
-          </Feed.Content>
-        </Feed.Event>
-      </Feed>
-)
 
 const Thread = (props) => (
-        <Comment>
-            <Comment.Avatar as='a' src={matt} />
+        <Comment className='comment'>
+            <Comment.Avatar as='a' src={pic} />
             <Comment.Content>
                 <Comment.Author as='a'>{props.author}</Comment.Author>
                 <Comment.Metadata>
@@ -230,6 +131,7 @@ const Thread = (props) => (
                     <Comment.Action>Reply</Comment.Action>
                     <Comment.Action>Upvote</Comment.Action>
                     <Comment.Action>Downvote</Comment.Action>
+                    <Comment.Action>Follow</Comment.Action>
                     <Comment.Action>
                         <Icon name='expand' />
                         Full-screen
@@ -269,15 +171,15 @@ class App extends Component {
         const { activeItem, collapsed } = this.state
 
         return (
-            <div>
-                <Menu>
+            <div style={{backgroundColor: '#e6ecf0'}}>
+                <Menu inverted style={{backgroundColor: '#710913'}}>
                     <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
                     <Menu.Item name='messages' active={activeItem === 'messages'} onClick={this.handleItemClick} />
-                    <Menu.Item name='friends' active={activeItem === 'friends'} onClick={this.handleItemClick} />
+                    <Menu.Item name='questions' active={activeItem === 'questions'} onClick={this.handleItemClick} />
 
                     <QuestionModal handleQuestionSubmit={this.handleQuestionSubmit} />
 
-                    <h1 className="title">SwatSaver</h1>
+                    <h1 className="title" style={{color: '#FFF'}}>SwatSaver</h1>
 
 
 
@@ -285,7 +187,7 @@ class App extends Component {
                         <Menu.Item>
                             <Input icon='search' placeholder='Search...' />
                             <Button primary>signup</Button>
-                            <Button secondary>login</Button>
+                            <Button>login</Button>
                         </Menu.Item>
                     </Menu.Menu>
                 </Menu>
@@ -296,8 +198,8 @@ class App extends Component {
                         <Thread key={i} author={thread.author} text={thread.text} />
                     ))}
 
-                    <Comment>
-                        <Comment.Avatar as='a' src={matt} />
+                    <Comment className='comment'>
+                        <Comment.Avatar as='a' src={pic} />
                         <Comment.Content>
                             <Comment.Author as='a'>Luke Tinik</Comment.Author>
                             <Comment.Metadata>
@@ -310,6 +212,7 @@ class App extends Component {
                                 <Comment.Action>Reply</Comment.Action>
                                 <Comment.Action>Upvote</Comment.Action>
                                 <Comment.Action>Downvote</Comment.Action>
+                                <Comment.Action>Follow</Comment.Action>
                                 <Comment.Action>
                                     <Icon name='expand' />
                                     Full-screen
@@ -324,7 +227,7 @@ class App extends Component {
                     </Comment>
 
                     <Comment collapsed = {collapsed}>
-                        <Comment.Avatar as='a' src={matt} />
+                        <Comment.Avatar as='a' src={pic} />
                         <Comment.Content>
                             <Comment.Author as='a'>Henry Han</Comment.Author>
                             <Comment.Metadata>
@@ -337,6 +240,7 @@ class App extends Component {
                                 <Comment.Action>Reply</Comment.Action>
                                 <Comment.Action>Upvote</Comment.Action>
                                 <Comment.Action>Downvote</Comment.Action>
+                                <Comment.Action>Follow</Comment.Action>
                                 <Comment.Action>
                                     <Icon name='expand' />
                                     Full-screen

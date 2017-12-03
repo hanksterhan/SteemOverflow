@@ -43,12 +43,16 @@ class QuestionModal extends React.Component {
                     </Form.Field>
 
                     <Button onClick={() => {
+                        if (this.state.name === '' || this.state.text === ''){
+                            return;
+                        }
                         this.handleClose()
                         swal({
                             title: 'Nice!',
                             text: 'Your question has been posted!',
                             type: 'success',
-                            confirmButtonText: 'Cool'
+                            timer: 1000,
+                            showConfirmButton: false
                         })
                         this.props.handleQuestionSubmit(this.state.name, this.state.text)
                     }}>Submit</Button>

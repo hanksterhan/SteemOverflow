@@ -5,3 +5,11 @@
 .title {
     padding-left: 10%;
 }
+
+.background1 {
+    column-rule-color: #e6ecf0;
+    color: #14171a;
+    font-size: 14px;
+    line-height: 20px;
+    overflow-y: scroll;
+}
