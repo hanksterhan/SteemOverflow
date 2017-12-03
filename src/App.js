@@ -19,7 +19,7 @@ const CommentExampleActions = (
                     <span>3 days ago</span>
                 </Comment.Metadata>
                 <Comment.Text>
-                    How do I apply for funding for my club?
+                    How do I get added to the waitlist for computer science?
                 </Comment.Text>
                 <Comment.Actions>
                     <Comment.Action>Reply</Comment.Action>
@@ -35,12 +35,12 @@ const CommentExampleActions = (
                 <Comment>
                     <Comment.Avatar as='a' src={matt} />
                     <Comment.Content>
-                        <Comment.Author as='a'>Won Chung</Comment.Author>
+                        <Comment.Author as='a'>Michael Wertz</Comment.Author>
                         <Comment.Metadata>
                             <span>Today at 4:20PM</span>
                         </Comment.Metadata>
                         <Comment.Text>
-                            You pull down your pants and everyone gives you money.
+                            You email the professor and follow the guidelines at www.cs.swarthmore.edu/waitlist-procedure
                         </Comment.Text>
                         <Comment.Actions>
                             <Comment.Action>Reply</Comment.Action>
@@ -63,7 +63,7 @@ const CommentExampleActions = (
                             <span>Today at 5:16PM</span>
                         </Comment.Metadata>
                         <Comment.Text>
-                            I need funding too!!
+                            Thank you!!!
                         </Comment.Text>
                         <Comment.Actions>
                             <Comment.Action>Reply</Comment.Action>
@@ -221,7 +221,7 @@ const Thread = (props) => (
             <Comment.Content>
                 <Comment.Author as='a'>{props.author}</Comment.Author>
                 <Comment.Metadata>
-                    <span>Today at 4:20PM</span>
+                    <span>Just now</span>
                 </Comment.Metadata>
                 <Comment.Text>
                     {props.text}
@@ -277,7 +277,7 @@ class App extends Component {
 
                     <QuestionModal handleQuestionSubmit={this.handleQuestionSubmit} />
 
-                    <h1 className="title">SwatOverflow</h1>
+                    <h1 className="title">SwatSaver</h1>
 
 
 
@@ -292,8 +292,8 @@ class App extends Component {
 
                 {CommentExampleActions}
                 <Comment.Group threaded className='text container'>
-                    {this.state.threads.map((thread) => (
-                        <Thread author={thread.author} text={thread.text} />
+                    {this.state.threads.map((thread,i) => (
+                        <Thread key={i} author={thread.author} text={thread.text} />
                     ))}
 
                     <Comment>
@@ -326,7 +326,7 @@ class App extends Component {
                     <Comment collapsed = {collapsed}>
                         <Comment.Avatar as='a' src={matt} />
                         <Comment.Content>
-                            <Comment.Author as='a'>Jake Wilder</Comment.Author>
+                            <Comment.Author as='a'>Henry Han</Comment.Author>
                             <Comment.Metadata>
                                 <span>Just Now</span>
                             </Comment.Metadata>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Header, Image, Modal, Menu, Form, TextArea } from 'semantic-ui-react'
+import swal from 'sweetalert2'
 
 class QuestionModal extends React.Component {
     constructor() {
@@ -7,6 +8,7 @@ class QuestionModal extends React.Component {
         this.state = {
             name: "",
             text: "",
+            open: false
         }
 
         this.handleNameChange = this.handleNameChange.bind(this);
@@ -21,9 +23,13 @@ class QuestionModal extends React.Component {
         this.setState({text: event.target.value});
     }
 
+    handleOpen = () => this.setState({ open: true })
+
+    handleClose = () => this.setState({ open: false })
+
     render() {
         return (
-          <Modal trigger={<Menu.Item name='Ask Question' onClick={this.openModal} />}>
+          <Modal open={this.state.open} trigger={<Menu.Item name='Ask Question' onClick={this.handleOpen} />}>
             <Modal.Header>Ask a Question</Modal.Header>
             <Modal.Content>
                 <Form>
@@ -37,6 +43,13 @@ class QuestionModal extends React.Component {
                     </Form.Field>
 
                     <Button onClick={() => {
+                        this.handleClose()
+                        swal({
+                            title: 'Nice!',
+                            text: 'Your question has been posted!',
+                            type: 'success',
+                            confirmButtonText: 'Cool'
+                        })
                         this.props.handleQuestionSubmit(this.state.name, this.state.text)
                     }}>Submit</Button>
                 </Form>
