@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Header, Image, Modal, Menu, Form, TextArea } from 'semantic-ui-react'
+import { Button, Header, Image, Modal, Menu, Form, TextArea, Loader, Dimmer, Segment } from 'semantic-ui-react'
 import swal from 'sweetalert2'
 
 class QuestionModal extends React.Component {

@@ -13,3 +13,7 @@
     line-height: 20px;
     overflow-y: scroll;
 }
+
+textarea {
+    border-radius: 10px;
+}
