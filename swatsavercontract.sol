@@ -69,10 +69,12 @@ function payoutResponders() onlyState(State.distributeFunds) returns (bool) {
       uint payout;
       proportion = responders[j].userWeight/totalWeights;
       payout = bounty/proportion;
+      responders[j].userAddress.transfer(payout);
       bounty = bounty - payout;
     }
   }
   currentState = State.closeContract;
+  return true;
 }
 
 }
