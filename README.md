@@ -1,4 +1,4 @@
-# SwatOverflow
+# SwatSaver
 ### Swarthmore Local Hack Day 2017
 Project is still a work in progress :)
 
