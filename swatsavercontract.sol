@@ -61,6 +61,9 @@ function storeResponders(address[] _responderAddress, uint[] _weight) onlyState(
   currentState = State.distributeFunds;
 }
 
+//TODO: The amount of ether to be distributed to each answer should be determined off chain.  
+//Calculating payout on chain increases gas cost & there's no loss in decentralization as distribution is effectively determined off chain in our current iteration. 
+//Might look into a payment channel solution down the line.
 
 function payoutResponders() onlyState(State.distributeFunds) returns (bool) {
   for (uint j = 0; j < responders.length; j++) {
